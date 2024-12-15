@@ -27,10 +27,9 @@ async def root():
 async def weather_prediction(city: str):
     try:
         current_weather = get_current_weather(city)
-
-        csv_path = os.path.join(
-            "C:\\Users\\singh\\Desktop\\Epic_api\\app\\weather_EPICS.csv"
-        )
+        BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+        csv_path = os.path.join(BASE_DIR, "weather_EPICS.csv")
+        
         historical_data = read_historical_data(csv_path)
 
         x, y, le = prepare_data(historical_data)
